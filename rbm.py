@@ -18,6 +18,8 @@ def main():
   
   optparser = optparse.OptionParser()
   optparser.add_option("-j", "--j", dest="num_hidden", default=1, type="int", help="Number of hidden neurons")
+  optparser.add_option("-n", "--n", dest="num_iter", default=10000, type="int", help="Number of training epochs")
+  
   (opts, _) = optparser.parse_args()
   
   I = 2
@@ -30,7 +32,7 @@ def main():
   
   pp.pprint(W)
   plot(data)
-  weights, visible_biases, hidden_biases = train(data, W, visible_biases, hidden_biases, I, J)
+  weights, visible_biases, hidden_biases = train(data, W, visible_biases, hidden_biases, I, J, opts.num_iter)
   
   actual_hidden = [reconstruct_hidden(data_row, I, J, weights, hidden_biases) for data_row in data]
   reconstructed_visible = [reconstruct_visible(hv, I, J, weights, visible_biases) for hv in actual_hidden]
