@@ -71,7 +71,7 @@ def train(data, weights, visible_biases, hidden_biases, I, J, iterations=100000,
     print "Training iter: " + str(iter) + "\n"
     actual_hidden = [reconstruct_hidden(data_row, I, J, weights, hidden_biases) for data_row in data]
     reconstructed_visible = [reconstruct_visible(hv, I, J, weights, visible_biases) for hv in actual_hidden]
-    reconstructed_hidden = [reconstruct_hidden(data_row, I, J, weights, hidden_biases) for rv in reconstructed_visible]
+    reconstructed_hidden = [reconstruct_hidden(rv, I, J, weights, hidden_biases) for rv in reconstructed_visible]
     
     for i in range(I):
       
